@@ -34,9 +34,9 @@ class Hotel{
         this.#areaHotel=areaHotel
     }
     calcularManteniment(){
-        numberKellys=numberRooms/20
-        costManteniment=numberKellys*1500
-        return costManteniment
+       let numberKellys=Number(this.getNumberRooms/20)
+        let costManteniment=numberKellys*1500
+        
     }
 }
 
@@ -89,7 +89,52 @@ function veureHotel(){
  prueba()
 } 
 function prueba(){
-    let fichaHotel=document.getElementById("fichaHotel")
-    fichaHotel.innerText="Este es mi hotel"  
-} 
+    let hotelNameScript=prompt("Nombre del hotel")
+    let contador=0 // obtenir la posició del element que volem veure
+    let hotelDoesntExist=true
+    for(value of cadenaHoteles){
+        if(value.getNameHtl()===hotelNameScript){// valida per cada element si es igual el nom, un per un
+            cadenaHoteles.length//borra del array (posicio, cantitat)
+            console.log(value.getNameHtl(),value.getNumberFloors())
+                
+            hotelDoesntExist=false
+         
+        } 
+        
+        contador++
+         
+    }
 
+    if(hotelDoesntExist){
+        alert(`El hotel ${hotelNameScript} no está en nuestra base de datos`)
+        console.log(`El hotel no existe. Verificar en lista ${cadenaHoteles} `)
+    }
+    let fichaHotel=document.getElementById("fichaHotel")
+    fichaHotel.innerText=`El Hotel ${hotelNameScript}, tiene ${value.getNumberFloors()} habitaciones, ${value.getNumberFloors()} pisos y un total de ${value.getAreaHotel()}m cuadrados.` 
+    let mantenimiento=document.getElementById("mantenimiento")
+    mantenimiento=document.getElementById(`El cost de manteniment en maxima ocupació es de ${costManteniment} euros`)
+} 
+function modificarHotel(){
+    let hotelNameModificar=prompt("Nombre del hotel")
+    let contador=0 // obtenir la posició del element que volem veure
+    let hotelDoesntExist=true
+    for(value of cadenaHoteles){
+        if(value.getNameHtl()===hotelNameModificar){// valida per cada element si es igual el nom, un per un
+            cadenaHoteles.length//borra del array (posicio, cantitat)
+            //como poner los sets para cambiar los datos del objeto dentro del array
+             setNumberRooms=  
+            hotelDoesntExist=false
+         
+        } 
+        
+        contador++
+         
+    }
+    
+    
+
+    if(hotelDoesntExist){
+        alert(`El hotel ${hotelNameScript} no está en nuestra base de datos`)
+        console.log(`El hotel no existe. Verificar en lista ${cadenaHoteles} `)  
+    }
+}
