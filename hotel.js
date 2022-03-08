@@ -34,13 +34,14 @@ class Hotel{
         this.#areaHotel=areaHotel
     }
     calcularManteniment(){
-       let numberKellys=Number(this.getNumberRooms/20)
+       let numberKellys=this.getNumberRooms()/20
         let costManteniment=numberKellys*1500
+        return costManteniment
         
     }
 }
 
-function crearHotel(crearnewHotel){
+function crearHotel(){
     let nameHtl=prompt("Nombre del Hotel")
     let numberRooms=Number(prompt("Número de Habitaciones del Hotel"))
     let numberFloors=Number(prompt("Cuantos pisos tiene el Hotel"))
@@ -50,9 +51,9 @@ function crearHotel(crearnewHotel){
 }
 
 let cadenaHoteles=[]
-function crearnewHotel(){
-newHotel= crearHotel()
-cadenaHoteles.push(newHotel)
+function addHotel(){
+    let newHotel= crearHotel()
+    cadenaHoteles.push(newHotel)
   
     
     console.log(newHotel)
@@ -92,11 +93,12 @@ function prueba(){
     let hotelNameScript=prompt("Nombre del hotel")
     let contador=0 // obtenir la posició del element que volem veure
     let hotelDoesntExist=true
+    let hotelFound
     for(value of cadenaHoteles){
         if(value.getNameHtl()===hotelNameScript){// valida per cada element si es igual el nom, un per un
             cadenaHoteles.length//borra del array (posicio, cantitat)
             console.log(value.getNameHtl(),value.getNumberFloors())
-                
+            hotelFound = value
             hotelDoesntExist=false
          
         } 
@@ -110,10 +112,12 @@ function prueba(){
         console.log(`El hotel no existe. Verificar en lista ${cadenaHoteles} `)
     }
     let fichaHotel=document.getElementById("fichaHotel")
-    fichaHotel.innerText=`El Hotel ${hotelNameScript}, tiene ${value.getNumberFloors()} habitaciones, ${value.getNumberFloors()} pisos y un total de ${value.getAreaHotel()}m cuadrados.` 
-    let mantenimiento=document.getElementById("mantenimiento")
-    mantenimiento=document.getElementById(`El cost de manteniment en maxima ocupació es de ${costManteniment} euros`)
+    fichaHotel.innerText=`El Hotel ${hotelFound.getNameHtl()}, tiene ${hotelFound.getNumberFloors()} habitaciones, ${hotelFound.getNumberFloors()} pisos y un total de ${hotelFound.getAreaHotel()}m cuadrados.` 
+    let mantenimientoElement=document.getElementById("mantenimiento")
+    mantenimientoElement.innerText=`El cost de manteniment en maxima ocupació es de ${hotelFound.calcularManteniment()} euros`
+
 } 
+
 function modificarHotel(){
     let hotelNameModificar=prompt("Nombre del hotel")
     let contador=0 // obtenir la posició del element que volem veure
